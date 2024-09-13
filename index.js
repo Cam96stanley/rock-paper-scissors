@@ -14,3 +14,23 @@ const getComputerChoice = function () {
 };
 
 console.log(getComputerChoice());
+
+// *GET HUMAN CHOICE*
+
+// This function prompts the user to input a value of rock, paper, or scissors and logs that input to the console. If the user inputs a value other than rock, paper, or scissors, the prompt will ask the user to input a valid value.
+
+let getHumanChoice = function () {
+  let userChoice = window.prompt("Enter rock, paper or scissors");
+  if (
+    userChoice === "rock" ||
+    userChoice === "paper" ||
+    userChoice === "scissors"
+  ) {
+    return userChoice;
+  } else {
+    return window.prompt("Error, please choose either rock, paper or scissors");
+  }
+};
+
+let userInput = getHumanChoice();
+console.log(userInput);
