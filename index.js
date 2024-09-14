@@ -6,10 +6,13 @@ const getComputerChoice = function () {
   const randomNum = Math.floor(Math.random() * 3) + 1;
   if (randomNum === 1) {
     console.log("rock");
+    return "rock";
   } else if (randomNum === 2) {
     console.log("paper");
+    return "paper";
   } else if (randomNum === 3) {
     console.log("scissors");
+    return "scissors";
   }
 };
 
@@ -25,58 +28,59 @@ let getHumanChoice = function () {
     userChoice === "scissors"
   ) {
     console.log(userChoice);
+    return userChoice;
   } else {
     return window.prompt("Error, please choose either rock, paper or scissors");
   }
 };
 
-// *DECLARE PLAYERS SCORE VARIABLES*
+// *PLAY GAME*
 
-let humanScore = 0;
-let computerScore = 0;
-console.log(humanScore);
-console.log(computerScore);
+// This function took the Playround function and placed it inside the playGame function in order to play 5 rounds of the game. After each round the console logs the current score of the user and computer.
 
-// *LOGIC FOR PLAYING A SINGLE ROUND*
+const playGame = function () {
+  let humanScore = 0;
+  let computerScore = 0;
 
-// This is the function to determine the winner of a single round rock paper scissors based off the user input. Currently, the score increment is not functioning as intended. Need score from above to increment up by one dependng on the winner.
-
-const playRound = function (humanChoice, computerChoice) {
-  //   let humanChoice = humanChoice.toLowerCase();
-
-  if (humanChoice === computerChoice) {
-    console.log("This round was a tie!");
-  }
-  if (humanChoice === "rock") {
-    if (computerChoice === "scissors") {
-      console.log("You win! Rock beats Scissors");
-      humanScore++;
-    } else {
-      console.log("You loose! Paper beats Rock");
-      computerScore++;
-    }
-  }
-  if (humanChoice === "paper") {
-    if (computerChoice === "rock") {
-      console.log("You win! Paper beats Rock");
-      humanScore++;
-    } else {
-      console.log("You loose! Scissors beats Paper");
-      computerScore++;
-    }
-  }
-  if (humanChoice === "scissors") {
-    if (computerChoice === "paper") {
-      console.log("You win! Scissors beats Paper");
-      humanScore++;
-    } else {
-      console.log("You loose! Rock beats Scissors");
-      computerScore++;
-    }
+  for (let i = 0; i < 5; i++) {
+    const playRound = function (humanChoice, computerChoice) {
+      if (humanChoice === computerChoice) {
+        console.log("This round was a tie!");
+        return;
+      }
+      if (humanChoice === "rock") {
+        if (computerChoice === "scissors") {
+          console.log("You win! Rock beats Scissors");
+          humanScore++;
+        } else {
+          console.log("You loose! Paper beats Rock");
+          computerScore++;
+        }
+      }
+      if (humanChoice === "paper") {
+        if (computerChoice === "rock") {
+          console.log("You win! Paper beats Rock");
+          humanScore++;
+        } else {
+          console.log("You loose! Scissors beats Paper");
+          computerScore++;
+        }
+      }
+      if (humanChoice === "scissors") {
+        if (computerChoice === "paper") {
+          console.log("You win! Scissors beats Paper");
+          humanScore++;
+        } else {
+          console.log("You loose! Rock beats Scissors");
+          computerScore++;
+        }
+      }
+    };
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+    console.log(`Your score: ${humanScore}`);
+    console.log(`Computer score: ${computerScore}`);
   }
 };
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
