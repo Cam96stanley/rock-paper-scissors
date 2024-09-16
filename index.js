@@ -1,4 +1,7 @@
-// *GET COMPUTER CHOICE*
+const 
+
+
+
 
 const getComputerChoice = function () {
   const randomNum = Math.floor(Math.random() * 3) + 1;
